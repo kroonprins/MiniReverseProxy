@@ -1,0 +1,14 @@
+---
+
+proxies:
+  - port: 8701
+    targets:
+      - path: /device
+        host: http://192.168.42.1:8080
+      - path: /server
+        host: http://127.0.0.1:8750
+  - port: 8702
+    targets:
+      - path: /
+        host: http://192.168.42.1:8080
+
