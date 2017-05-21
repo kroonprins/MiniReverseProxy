@@ -15,17 +15,23 @@ public class SslContextFactoryBuilder {
 		if (keyStore != null) {
 			sslContextFactory.setKeyStorePath(keyStore.getPath());
 			sslContextFactory.setKeyStorePassword(keyStore.getPassword());
-			sslContextFactory.setKeyStoreType(keyStore.getType());
+
+			if (keyStore.getType() != null) {
+				sslContextFactory.setKeyStoreType(keyStore.getType());
+			}
 		}
 
 		StoreConfiguration trustStore = httpsConfiguration.getTrustStore();
 		if (keyStore != null) {
 			sslContextFactory.setTrustStorePath(trustStore.getPath());
 			sslContextFactory.setTrustStorePassword(trustStore.getPassword());
-			sslContextFactory.setTrustStoreType(trustStore.getType());
+
+			if (trustStore.getType() != null) {
+				sslContextFactory.setTrustStoreType(trustStore.getType());
+			}
 		}
 
-		if (httpsConfiguration != null) {
+		if (httpsConfiguration.getAlias() != null) {
 			sslContextFactory.setCertAlias(httpsConfiguration.getAlias());
 		}
 
